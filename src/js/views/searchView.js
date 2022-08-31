@@ -24,7 +24,10 @@ class SearchView {
       .querySelector(`.header__logo`)
       .addEventListener('click', function (e) {
         e.preventDefault();
-        location.replace('http://localhost:1234');
+        const url = document.URL;
+        const goto = url.includes('#') ? url.indexOf('#') - 1 : url.length;
+        console.log(url.slice(0, goto));
+        location.replace(url.slice(0, goto));
         // location.reload();
       });
   }
