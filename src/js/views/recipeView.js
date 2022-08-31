@@ -9,16 +9,10 @@ class RecipeView extends View {
   _message = '';
 
   addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(ev =>
-      window.addEventListener(ev, function (e) {
-        e.preventDefault();
-        handler();
-      })
-    );
+    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
   addHandlerUpdateServings(handler) {
-    e.preventDefault();
     this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
@@ -30,7 +24,6 @@ class RecipeView extends View {
 
   addHandlerBookmark(handler) {
     this._parentElement.addEventListener('click', function (e) {
-      e.preventDefault();
       const btn = e.target.closest('.btn--bookmark');
       if (!btn) return;
 
