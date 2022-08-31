@@ -125,14 +125,18 @@ class RecipeView extends View {
       `;
   }
   _generateMarkupIngredient(ing) {
+    let frac;
+    try {
+      frac = ing.quantity ? new Fraction.Fraction(ing.quantity).toString() : '';
+    } catch (err) {
+      frac = ing.quantity ? ing.quantity : '';
+    }
     return `
         <li class="recipe__ingredient">
         <svg class="recipe__icon">
         <use href="${icons}#icon-check"></use>
         </svg>
-        <div class="recipe__quantity">${
-          ing.quantity ? new Fraction.Fraction(ing.quantity).toString() : ''
-        }</div>
+        <div class="recipe__quantity">${frac}</div>
         <div class="recipe__description">
         <span class="recipe__unit">${ing.unit}</span>
         ${ing.description}
