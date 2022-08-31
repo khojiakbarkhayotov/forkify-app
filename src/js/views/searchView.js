@@ -23,6 +23,7 @@ class SearchView {
     document
       .querySelector(`.header__logo`)
       .addEventListener('click', function (e) {
+        e.preventDefault();
         location.replace('http://localhost:1234');
         // location.reload();
       });
